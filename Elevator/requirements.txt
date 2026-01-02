@@ -1,0 +1,35 @@
+"How many elevators and floors are we dealing with? Is this configurable or fixed?"
+"Once someone is inside an elevator, how do they select floors? Can they select multiple destinations?"
+"Should we distinguish between different types of stops? Like someone on a floor calling the elevator up versus down, versus someone inside selecting a destination?"
+"What about invalid requests? Should we handle things like requesting a floor that doesn't exist, or someone pressing the button for the floor they're already on?"
+"Should we worry about elevator capacity, weight limits, door mechanics, or emergency stops?"
+
+
+Requirements:
+1. System manages 3 elevators serving 10 floors (0-9)
+2. Users can request an elevator from any floor (hall call). System decides which elevator to dispatch.
+3. Once inside, users can select one or more destination floors
+4. Simulation runs in discrete time steps (e.g., a `step()` or `tick()` call advances time)
+5. Elevator stops come in two types:
+    - Hall calls: Request from a floor with direction (UP or DOWN)
+    - Destination: Request from inside elevator (no direction specified)
+6. System handles multiple concurrent pickup requests across floors
+7. Invalid requests should be rejected (return false)
+    - Non-existent floor numbers
+8. Requests for the current floor are treated as a no-op / already served (doors out of scope)
+
+Out of scope:
+- Weight capacity and passenger limits
+- Door open/close mechanics
+- Emergency stop functionality
+- Dynamic floor/elevator configuration
+- UI/rendering layer
+
+
+Core Entities:
+1. Elevator
+    - Attributes: current_floor, direction (UP, DOWN, IDLE), destination_floors (set)
+    - Methods: move(), add_destination(floor), step()
+2. ElevatorController
+    - Attributes: elevators (list of Elevator), pending_hall_calls (list of (floor, direction))
+    - Methods: request_elevator(floor, direction), step(), assign_elevators()

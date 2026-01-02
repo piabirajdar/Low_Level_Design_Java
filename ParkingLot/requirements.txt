@@ -1,0 +1,33 @@
+"So when a vehicle enters, the system assigns it a specific spot automatically?"
+"What types of vehicles does the system support? Just cars, or do we need motorcycles, trucks, that kind of thing?"
+"What happens when the vehicle enters? Do they get a ticket, a code, or something else to prove they parked there?"
+"How does pricing work? Is it hourly, flat rate, different rates for different vehicle types?"
+"What happens if the lot is full when someone tries to enter? Or if they try to exit with an invalid ticket?"
+"What if someone loses their ticket? Do we need to handle that case?"
+"Last question. What's out of scope? Are we worrying about payment processing, entrance gates, cameras, that kind of infrastructure?"
+
+Requirements:
+1. System supports three vehicle types: Motorcycle, Car, Large Vehicle
+2. When a vehicle enters, system automatically assigns an available compatible spot
+3. System issues a ticket at entry.
+4. When a vehicle exits, user provides ticket ID
+   - System validates the ticket
+   - Calculates fee based on time spent (hourly, rounded up)
+   - Frees the spot for next use
+5. Pricing is hourly with same rate for all vehicles
+6. System rejects entry if no compatible spot is available
+7. System rejects exit if ticket is invalid or already used
+
+Out of scope:
+- Payment processing
+- Physical gate hardware
+- Security cameras or monitoring
+- UI/display systems
+- Reservations or pre-booking
+
+
+Entitties:
+1. Vehicle - Attributes: vehicle_type (Motorcycle, Car, Large Vehicle), license_plate ------  external system so do not worry
+2. ParkingSpot - Attributes: spot_id, spot_type (Motorcycle, Car, Large Vehicle), is_occupied
+3. Ticket - Attributes: ticket_id, vehicle_type, entry_time, exit_time, is
+4. ParkingLot - Need some orchestrator which will do the steps...Attributes: spots (list of ParkingSpot), tickets (list of Ticket)

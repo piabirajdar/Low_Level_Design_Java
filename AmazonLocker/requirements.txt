@@ -1,0 +1,42 @@
+"Are there different sized compartments? Can a small package go into a large compartment if all the small ones are full?"
+"What's in scope for this system? Are we modeling the whole delivery flow, or just the piece from when the driver arrives at the locker until the customer picks up?"
+"How does the customer get their code? Do we need to send an SMS or email, or do we just return the code and let some other system handle notification?"
+"What happens if someone enters the wrong code multiple times? Should we lock them out for security?"
+"Can one customer have multiple packages in the system at once? Are access tokens unique per package?"
+"How long do the codes last? What happens to a package if it's never picked up?"
+"Last one. What if all compartments of a given size are full when a driver tries to deposit?"
+
+
+
+
+# 1. Driver deposits the package by specifying (small, medium, large)
+#    a. System assigns a locker based on size and availability
+#    b. System returns locker number and unique access code or error if no lockers available
+# 2. Upon successfull deposit an access token is generated and returned
+#    a. One access token per package
+# 3. User retrieves package by providing locker number and access code
+#    a. System verifies access code and returns the locker number
+#    b. If valid, locker is opened and package is retrieved
+#    c. If invalid, error message is returned
+# 4. Access tokens expire after 7 days if package is not retrieved
+#    a. System sends notification to user before expiration
+#    b. expire packages automatically free up space
+# 5. Invalid access tokens are rejected with error message
+#    a. wrong code, already used or expired -- user gets specific feedback
+
+
+
+# Out of scope:
+# - How the package gets to the locker (delivery logistics)
+# - How the access token reaches the customer (SMS/email notification)
+# - Lockout after failed access token attempts
+# - UI/rendering layer
+# - Multiple locker stations
+# - Payment or pricing
+
+
+
+# Entities:
+# Locker ---The orchestrator. Owns all compartments, the AccessToken lookup map, and an occupancy set tracking which compartments are in use. Handles deposit and pickup operations.
+# Comparements --- A physical locker slot. Has an ID and a size. No knowledge of access tokens — it's just a dumb container.
+# Access Token. --- Represents a bearer token for compartment access. Holds the code, expiration timestamp, and a reference to the compartment it unlocks. Enforces expiry when validating.
