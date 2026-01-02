@@ -50,4 +50,3 @@ The focus is on practicing:
 ## ⚠️ Proprietary Notice
 © 2026 **Priyanka Birajdar**. All rights reserved.  
 This repository and its contents are proprietary and intended solely for personal reference and interview preparation.  
-Unauthorized use, reproduction, or distribution of this material without explicit permission is prohibited.
