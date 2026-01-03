@@ -1,0 +1,29 @@
+"When you say 'multiple warehouses,' are we talking about a fixed set of warehouses configured at startup, or can warehouses be added dynamically?"
+"For the low-stock alerts you mentioned, how do those work? Do we configure a threshold per product, or is it more granular?"
+"How should the notification happen? Are we sending emails, calling a webhook, or just returning something to the caller?"
+"What about invalid operations? Should we allow negative inventory, or reject operations that would take stock below zero?"
+"What about concurrent access? If two processes are trying to modify the same warehouse's inventory at the same time, do we need to handle that?"
+"Last one. What's out of scope? Are we managing product catalogs, handling orders, that kind of thing?"
+
+
+Requirements:
+1. Track inventory for products across multiple warehouses
+2. Add stock to a specific warehouse (receiving shipments)
+3. Remove stock from a specific warehouse (fulfilling orders)
+4. Check availability: given a product and quantity, return which warehouses can fulfill it
+5. Transfer stock between warehouses
+6. Low-stock alerts
+7. Reject operations that would result in negative inventory
+8. System must be thread-safe to handle concurrent operations
+
+Out of Scope:
+- Product catalog management (products exist externally)
+- Order processing / payment / serviceability
+- Persistence
+
+
+Entities:
+1. warehouse - Represents a single storage location. Holds a map of productId → quantity. Enforces the "no negative stock" invariant. Owns its alert configurations and fires alerts when stock changes trigger thresholds. Does not know about other warehouses.
+2. InventoryManager - Manages multiple warehouses. Routes requests to the appropriate warehouse(s). Handles transfers between warehouses. Provides the API for adding/removing stock, checking availability, and configuring alerts.
+3. AlertConfig - A value object grouping the threshold and the listener to notify when stock drops below that threshold.
+4. AlertListener - An interface defining a method to be called when a low-stock alert is triggered. Implementations could send emails, call webhooks, etc.
