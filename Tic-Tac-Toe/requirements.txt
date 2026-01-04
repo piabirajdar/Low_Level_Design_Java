@@ -1,0 +1,15 @@
+1. A 3x3 game board.
+
+2. Two human players.
+
+3. Alternating turns between 'X' and 'O'.
+
+4. Move validation to ensure no wrong moves are made.
+
+5. Detection of win or draw scenarios.
+
+
+Core Entities:
+1. Game
+2. Board
+3. Player

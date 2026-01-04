@@ -13,9 +13,6 @@
     + getCell(int row, int column) -> DiscColor
  }
 
-
-
-
 private boolean checkWin(int row, int column, DiscColor color) {
     return checkDirection(row, column, color, 1, 0) || // Vertical
            checkDirection(row, column, color, 0, 1) || // Horizontal
