@@ -1,0 +1,28 @@
+File System LLD Requirements:
+• Hierarchical path structure with "/" as delimiter
+
+• CRUD operations (Create, Read, Update, Delete)
+
+• Path validation including parent path existence
+
+• Efficient storage and retrieval of files and directories. 
+
+• Support for path-value associations.
+                  
+
+
+Entities:
+1. FileSystemNode
+    • Common properties and methods for both files and directories
+    • Represents the base entity in the file system
+2. File:
+    • Inherits from FileSystemNode
+    • Represents a file in the file system
+    • Contains file-specific properties like content, size, etc.
+3. Directory:
+    • Inherits from FileSystemNode
+    • Represents a directory in the file system
+    • Contains a list of child FileSystemNodes (files and directories)
+4. FileSystem:
+    • Manages the overall file system structure
+    • Contains methods for CRUD operations and path validation
