@@ -46,6 +46,3 @@ The focus is on practicing:
 ---
 ⭐ Maintained as a personal reference for low-level system design interviews.
 
-## ⚠️ Proprietary Notice
-© 2026 **Priyanka Birajdar**. All rights reserved.  
-This repository and its contents are proprietary and intended solely for personal reference and interview preparation.  
