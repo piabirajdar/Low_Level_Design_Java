@@ -13,31 +13,30 @@ The focus is on practicing:
 ### 1️⃣ Connect Four
 - Game state management and win detection
 - Board, player, and turn-based flow modeling
-
 ---
-
 ### 2️⃣ Parking Lot System
 - Vehicle-to-spot allocation and ticketing flow
 - Entry, exit, and occupancy management
-
 ---
-
 ### 3️⃣ Amazon Locker System
 - Locker assignment based on package size
 - Order lifecycle and pickup handling
-
 ---
-
 ### 4️⃣ Elevator System
 - Tick-by-tick execution and movement logic
 - Direction-based request scheduling
-
 ---
-
 ### 5️⃣ Inventory Management System
 - Stock tracking and reservation handling
 - SKU-based inventory modeling
-
+---
+### 6️⃣ Car Rental System
+- Time-based car reservation and conflict-free booking
+- Rental lifecycle management from pickup to return
+---
+### 7️⃣ File System
+- Hierarchical file and directory modeling
+- Path resolution and CRUD operations orchestration
 ---
 
 ## 🧱 Design Focus
