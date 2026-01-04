@@ -38,6 +38,10 @@ The focus is on practicing:
 - Hierarchical file and directory modeling
 - Path resolution and CRUD operations orchestration
 ---
+### 8️⃣ Tic-Tac-Toe
+- Turn-based game flow and move validation
+- Win and draw detection using board state
+---
 
 ## 🧱 Design Focus
 - SOLID principles and clean abstractions
